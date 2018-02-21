@@ -4,13 +4,18 @@ p("Lua, JS (Node/Web) and other stuff", "center", "16px").style["font-style"] = 
 
 pageEl("Some of my stuff", "h1");
 
-tlink("RandomCodeSnippets", "https://github.com/iagrib/RandomCodeSnippets");
-p("A collection of small code snippets that you may or may not find useful, as the title suggests.");
+tlink("prettify-bot", "https://github.com/iagrib/prettify-bot");
+p("A Discord bot that can prettify users' code and upload it to hastebin in a moment.");
 
 br();
 
-tlink("prettify-bot", "https://github.com/iagrib/prettify-bot");
-p("A Discord bot that can prettify users' code and upload it to hastebin in a moment.");
+tlink("AsyncLua", "https://github.com/iagrib/AsyncLua");
+p("Wrapper around coroutines that allows you to handle asynchronous events without ugly callbacks.");
+
+br();
+
+tlink("RandomCodeSnippets", "https://github.com/iagrib/RandomCodeSnippets");
+p("A collection of small code snippets that you may or may not find useful, as the title suggests.");
 
 br();
 
