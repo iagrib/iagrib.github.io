@@ -1,4 +1,6 @@
-﻿function append(el, before = null) {
+﻿const n = 1;
+
+function append(el, before = null) {
 	document.body.insertBefore(el, before);
 	return el;
 }
@@ -47,7 +49,7 @@ pagebg.title = "Toggle the lights";
 buttons.appendChild(pagebg);
 
 const home = newEl("🏠", "div", false);
-home.onclick = () => load("home");
+home.onclick = load.bind(null, "home");
 home.style.display = "inline-block";
 home.title = "Back to home page";
 home.style["margin-left"] = "10px";
@@ -94,7 +96,7 @@ function p(...args) {
 
 function pageLink(content, page) {
 	const link = pageEl(content);
-	link.onclick = () => load(page);
+	link.onclick = load.bind(null, page);
 	link.style["text-decoration"] = "none";
 	link.style["border-bottom"] = "1px solid";
 	link.style.color = "#88f";
@@ -131,8 +133,8 @@ function line(...args) {
 function load(page) {
 	clearPage();
 	const newScript = newEl(null, "script");
-	newScript.onerror = () => load("404");
-	newScript.src = `pages/${page}.js`;
+	newScript.onerror = load.bind(null, "404");
+	newScript.src = `pages/${page}.js?${n}`;
 	history.pushState(null, null, page === "home" ? "/" : `?${page}`);
 	document.body.removeChild(newScript);
 }
