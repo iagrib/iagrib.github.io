@@ -136,7 +136,7 @@ function load(page) {
 	newScript.onerror = load.bind(null, "404");
 	newScript.src = `pages/${page}.js?${n}`;
 	history.pushState(null, null, page === "home" ? "/" : `?${page}`);
-	document.body.removeChild(newScript);
+	newScript.remove();
 }
 
 load(location.search.slice(1) || "home");
