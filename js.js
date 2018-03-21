@@ -5,16 +5,16 @@ function append(el, before = null) {
 	return el;
 }
 
-function newEl(content, type = "div", autoAppend = true) {
+function newEl(content = "", type = "div", autoAppend = true) {
 	const el = document.createElement(type);
-	if(content) el.textContent = content;
+	el.textContent = content;
 	return autoAppend ? append(el) : el;
 }
 
 function addText(content, align, size) {
 	const el = newEl(content, "p");
-	if(size) el.style["font-size"] = size;
-	if(align) el.style["text-align"] = align;
+	if(size) el.style.fontSize = size;
+	if(align) el.style.textAlign = align;
 	return append(el);
 }
 
@@ -36,7 +36,7 @@ const buttons = newEl();
 buttons.style.position = "sticky";
 buttons.style.top = "15px";
 buttons.style.opacity = 0.3;
-buttons.style["font-size"] = "20px";
+buttons.style.fontSize = "20px";
 buttons.style.cursor = "pointer";
 buttons.style["-webkit-user-select"] = "none";
 buttons.style.display = "inline-block";
@@ -52,25 +52,24 @@ const home = newEl("🏠", "div", false);
 home.onclick = load.bind(null, "home");
 home.style.display = "inline-block";
 home.title = "Back to home page";
-home.style["margin-left"] = "10px";
+home.style.marginLeft = "10px";
 buttons.appendChild(home);
 
 
 
-let currPage = [];
+let currPage = newEl();
 
 function addPageContent(el) {
-	currPage.push(el);
-	return el;
+	return currPage.appendChild(el);
 }
 
 function clearPage() {
-	for(const el of currPage) el.parentNode.removeChild(el);
-	currPage = [];
+	currPage.remove();
+	currPage = newEl();
 }
 
 function pageEl(content, el) {
-	return addPageContent(newEl(content, el));
+	return addPageContent(newEl(content, el, false));
 }
 
 function br(times) {
@@ -86,7 +85,7 @@ function link(content, href) {
 
 function tlink(...args) {
 	const a = link(...args);
-	a.style["font-size"] = "22px";
+	a.style.fontSize = "22px";
 	return a;
 }
 
@@ -97,11 +96,11 @@ function p(...args) {
 function pageLink(content, page) {
 	const link = pageEl(content);
 	link.onclick = load.bind(null, page);
-	link.style["text-decoration"] = "none";
-	link.style["border-bottom"] = "1px solid";
+	link.style.textDecoration = "none";
+	link.style.borderBottom = "1px solid";
 	link.style.color = "#88f";
 	link.style.display = "inline";
-	link.style["font-size"] = "22px";
+	link.style.fontSize = "22px";
 	link.style.cursor = "pointer";
 	return link;
 }
@@ -113,14 +112,14 @@ function codeblock(content) {
 		fl = fl ? code.appendChild(br()) : true;
 		code.appendChild(document.createTextNode(codeline));
 	}
-	code.style["background-color"] = "#000";
+	code.style.background = "#000";
 	code.style.color = "#fff";
 	code.style.display = "inline-block";
-	code.style["margin-left"] = "20px";
+	code.style.marginLeft = "20px";
 	code.style.padding = "10px";
-	code.style["border-radius"] = "5px";
-	code.style["font-family"] = "\"Roboto Mono\",monospace";
-	code.style["line-height"] = "25px";
+	code.style.borderRadius = "5px";
+	code.style.fontFamily = "\"Roboto Mono\",monospace";
+	code.style.lineHeight = "25px";
 	return code;
 }
 
