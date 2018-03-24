@@ -1,4 +1,4 @@
-﻿const n = 1;
+﻿const n = 3;
 
 function append(el, before = null) {
 	document.body.insertBefore(el, before);

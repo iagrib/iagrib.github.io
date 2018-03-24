@@ -4,6 +4,11 @@ p("Lua, JS (Node/Web) and other stuff", "center", "16px").style["font-style"] = 
 
 pageEl("Some of my stuff", "h1");
 
+tlink("Dota 2 Trivia", "/dota2trivia");
+p("Web version of Queue Time Trivia that was present in Dota 2 client during TI7 Battle Pass season.");
+
+br();
+
 tlink("prettify-bot", "https://github.com/iagrib/prettify-bot");
 p("A Discord bot that can prettify users' code and upload it to hastebin in a moment.");
 
